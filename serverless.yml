@@ -1,0 +1,49 @@
+
+service: kurral-api
+
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  region: us-west-2
+  stage: 'prod'
+  environment:
+    THIRUKKURAL_TABLE_NAME: ${self:custom.dynamodb.THIRUKKURAL_TABLE_NAME}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:*
+      Resource: '*'
+    - Effect: Allow
+      Action:
+        - ec2:DetachNetworkInterface
+        - ec2:DescribeNetworkInterfaces
+        - ec2:DeleteNetworkInterface
+      Resource: '*'
+
+package:
+  include:
+    - src/**/*
+    - node_modules/**/*
+
+functions:
+  createKurral:
+    handler: src/handler.create
+    events:
+      - http:
+          path: /thirukurral/create
+          method: POST
+          cors: true
+          private: true
+  readKurral:
+    handler: src/handler.getKurral
+    events:
+      - http:
+          path: /thirukurral/getKurral
+          method: GET
+          cors: true
+          private: true
+
+custom:
+  dynamodb:
+    THIRUKKURAL_TABLE_NAME: thirukurral_data

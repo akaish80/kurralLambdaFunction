@@ -1,0 +1,33 @@
+{
+  "name": "kurral-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "scripts": {
+    "build": "npm i && tsc",
+    "clean": "rm -rf out node_modules reports .serverless .build",
+    "package": "SLS_DEBUG=* && sls package --config ./serverless.package.yml",
+    "buildProd": "npm install --production",
+    "deploy": "SLS_DEBUG=* && serverless deploy",
+    "lint": "tslint --project tsconfig.json --format json --out list-result.json -c tslint.json 'src/**/*.ts'",
+    "lint:fix": "tslint --project tsconfig.json --fix 'src/**/*.ts'"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@aws/dynamodb-data-mapper": "^0.7.3",
+    "@aws/dynamodb-data-mapper-annotations": "^0.7.3",
+    "request-promise": "^4.2.4"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.36",
+    "@types/node": "^12.12.12",
+    "@types/request-promise": "^4.1.44",
+    "@types/serverless": "^1.18.2",
+    "aws-lambda": "^0.1.2",
+    "serverless": "^1.45.1",
+    "serverless-plugin-include-dependencies": "^3.2.1",
+    "serverless-plugin-typescript": "^1.1.9",
+    "tslint": "^5.20.1"
+  }
+}
