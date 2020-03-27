@@ -24,7 +24,7 @@
     "@types/node": "^12.12.12",
     "@types/request-promise": "^4.1.44",
     "@types/serverless": "^1.18.2",
-    "aws-lambda": "^0.1.2",
+    "aws-lambda": ">=1.0.5",
     "serverless": "^1.45.1",
     "serverless-plugin-include-dependencies": "^3.2.1",
     "serverless-plugin-typescript": "^1.1.9",
