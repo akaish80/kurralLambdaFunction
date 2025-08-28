@@ -11,12 +11,10 @@
     "emitDecoratorMetadata": true,
     "module": "commonjs",
     "esModuleInterop": true,
-    "target": "ES3",
     "sourceMap": true,
     "types": ["node"],
     "noImplicitAny": true,
     "moduleResolution": "node",
-    "suppressImplicitAnyIndexErrors": true,
     "lib": [
       "es2018",
       "dom",

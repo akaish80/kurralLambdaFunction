@@ -4,7 +4,7 @@ service: kurral-api
 
 provider:
   name: aws
-  runtime: nodejs12.x
+  runtime: nodejs20.x
   region: us-west-2
   stage: 'prod'
   environment:

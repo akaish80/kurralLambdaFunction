@@ -23,10 +23,11 @@ export async function create(event: APIGatewayProxyEvent): Promise<APIGatewayPro
 
 export async function getKurral(event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> {
 
-  const kurralJson = event.queryStringParameters ? event.queryStringParameters.id : undefined;
+  console.log('DEBUG: event.queryStringParameters =', event.queryStringParameters);
+  const kurralId = event.queryStringParameters ? event.queryStringParameters.id : undefined;
 
-  if (kurralJson && Object.keys(kurralJson).length > 0) {
-    return getKurralJSON(kurralJson);
+  if (kurralId) {
+    return getKurralJSON(Number(kurralId));
   } else {
     console.log('event_type="API", action="THIRUKURRAL_READ","status="Failed","msg"=" Get Kurral with no JSON."');
     return error(400, "Invalid Request. Get Kurral request is empty");
